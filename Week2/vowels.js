@@ -1,32 +1,34 @@
-resultList = [];
+vowels = [];
 repeats = 0;
 
 function searchVowel(myString){
     if(myString.indexOf("a")>=0){
-        resultList = resultList + ["a"];
+        vowels = vowels + ["a"];
     }
     if(myString.indexOf("e")>=0){
-        resultList = resultList + ["e"];
+        vowels = vowels + ["e"];
     }
     if(myString.indexOf("i")>=0){
-        resultList = resultList + ["i"];
+        vowels = vowels + ["i"];
     }
     if(myString.indexOf("o")>=0){
-        resultList = resultList + ["o"];
+        vowels = vowels + ["o"];
     }
     if(myString.indexOf("u")>=0){
-        resultList = resultList + ["u"];
+        vowels = vowels + ["u"];
     }
 
     for(counter = 0; counter <= myString.length; counter++){
         if(myString[counter]==myString[counter++]){
-            repeats = repeats++;
-            
+            repeats = repeats++;    
         }
     }
 }
 searchVowel("you go girl");
-console.log(resultList);
 
+function duplicates(str){
+    try{ return str.toLowerCase().split("").sort().join("").match(/(.)\1+/g).length; }
+    catch(e){ return 0; } 
+}
 
-    
+console.log("[" + "'" + vowels + "'" + "," + duplicates("you go girl") + "]");
